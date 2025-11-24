@@ -39,9 +39,15 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Color(0xFFFF0000),
         title: Text(widget.title),
       ),
-      body: const ResizableWebView(
-        url: "http://192.168.3.103:19000/",
-      ),
+      body: Column(
+        children: [
+          Text('top'),
+          ResizableWebView(
+            url: "http://192.168.3.103:19000/",
+          ),
+          Text('bottom')
+        ]
+      )
     );
   }
 }
@@ -66,12 +72,13 @@ class _ResizableWebViewState extends State<ResizableWebView> {
         initialUrlRequest: URLRequest(url: WebUri.uri(Uri.parse(widget.url))),
         initialSettings: InAppWebViewSettings(
           isInspectable: true,
+          verticalScrollBarEnabled: false,
+          disableVerticalScroll: true,
         ),
         onWebViewCreated: (controller) {
           controller.addJavaScriptHandler(
             handlerName: 'onEvent',
             callback: (args) {
-              print(args);
               if (args.isNotEmpty && args[0] is Map) {
                 final event = args[0] as Map;
                 if (event['type'] == 'resize' && event['height'] != null) {
