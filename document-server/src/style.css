@@ -22,3 +22,7 @@ body {
   margin: 0;
 }
 
+#resizableBlock {
+  background-color: #535bf2;
+  height: 100px;
+}
