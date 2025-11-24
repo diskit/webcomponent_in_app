@@ -39,14 +39,16 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Column(
-        children: [
-          Text('top'),
-          ResizableWebView(
-            url: "http://192.168.3.103:19000/",
-          ),
-          Text('bottom')
-        ]
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Text('top'),
+            ResizableWebView(
+              url: "http://10.10.32.72:19000",
+            ),
+            Text('bottom')
+          ]
+        )
       )
     );
   }
